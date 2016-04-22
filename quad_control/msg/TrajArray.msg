@@ -1,5 +1,5 @@
 Header header
 Twist[] velocity
-Vector3[] acceleration
+Wrench[] acceleration
 float64[] time
 Pose[] position

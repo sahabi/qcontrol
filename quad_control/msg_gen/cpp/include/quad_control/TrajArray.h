@@ -16,7 +16,7 @@
 
 #include "std_msgs/Header.h"
 #include "quad_control/Twist.h"
-#include "quad_control/Vector3.h"
+#include "quad_control/Wrench.h"
 #include "quad_control/Pose.h"
 
 namespace quad_control
@@ -49,8 +49,8 @@ struct TrajArray_ {
   typedef std::vector< ::quad_control::Twist_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Twist_<ContainerAllocator> >::other >  _velocity_type;
   std::vector< ::quad_control::Twist_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Twist_<ContainerAllocator> >::other >  velocity;
 
-  typedef std::vector< ::quad_control::Vector3_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Vector3_<ContainerAllocator> >::other >  _acceleration_type;
-  std::vector< ::quad_control::Vector3_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Vector3_<ContainerAllocator> >::other >  acceleration;
+  typedef std::vector< ::quad_control::Wrench_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Wrench_<ContainerAllocator> >::other >  _acceleration_type;
+  std::vector< ::quad_control::Wrench_<ContainerAllocator> , typename ContainerAllocator::template rebind< ::quad_control::Wrench_<ContainerAllocator> >::other >  acceleration;
 
   typedef std::vector<double, typename ContainerAllocator::template rebind<double>::other >  _time_type;
   std::vector<double, typename ContainerAllocator::template rebind<double>::other >  time;
@@ -86,12 +86,12 @@ template<class ContainerAllocator>
 struct MD5Sum< ::quad_control::TrajArray_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "5cfe93154dc27101e73a4984a4f1dcb4";
+    return "99f24457a2c25ec6098a54c362a36262";
   }
 
   static const char* value(const  ::quad_control::TrajArray_<ContainerAllocator> &) { return value(); } 
-  static const uint64_t static_value1 = 0x5cfe93154dc27101ULL;
-  static const uint64_t static_value2 = 0xe73a4984a4f1dcb4ULL;
+  static const uint64_t static_value1 = 0x99f24457a2c25ec6ULL;
+  static const uint64_t static_value2 = 0x098a54c362a36262ULL;
 };
 
 template<class ContainerAllocator>
@@ -110,10 +110,9 @@ struct Definition< ::quad_control::TrajArray_<ContainerAllocator> > {
   {
     return "Header header\n\
 Twist[] velocity\n\
-Vector3[] acceleration\n\
+Wrench[] acceleration\n\
 float64[] time\n\
 Pose[] position\n\
-\n\
 ================================================================================\n\
 MSG: std_msgs/Header\n\
 # Standard metadata for higher-level stamped data types.\n\
@@ -143,8 +142,11 @@ float64 x\n\
 float64 y\n\
 float64 z\n\
 ================================================================================\n\
+MSG: quad_control/Wrench\n\
+Vector3  force\n\
+Vector3  torque\n\
+================================================================================\n\
 MSG: quad_control/Pose\n\
-\n\
 # A representation of pose in free space, composed of postion and orientation. \n\
 Point position\n\
 Quaternion orientation\n\
@@ -220,7 +222,7 @@ s << std::endl;
       s << indent << "  acceleration[" << i << "]: ";
       s << std::endl;
       s << indent;
-      Printer< ::quad_control::Vector3_<ContainerAllocator> >::stream(s, indent + "    ", v.acceleration[i]);
+      Printer< ::quad_control::Wrench_<ContainerAllocator> >::stream(s, indent + "    ", v.acceleration[i]);
     }
     s << indent << "time[]" << std::endl;
     for (size_t i = 0; i < v.time.size(); ++i)

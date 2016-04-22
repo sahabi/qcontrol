@@ -91,8 +91,7 @@ template<class ContainerAllocator>
 struct Definition< ::quad_control::Pose_<ContainerAllocator> > {
   static const char* value() 
   {
-    return "\n\
-# A representation of pose in free space, composed of postion and orientation. \n\
+    return "# A representation of pose in free space, composed of postion and orientation. \n\
 Point position\n\
 Quaternion orientation\n\
 ================================================================================\n\

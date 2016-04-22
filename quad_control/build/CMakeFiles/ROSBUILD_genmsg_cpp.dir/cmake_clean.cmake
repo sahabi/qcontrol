@@ -13,6 +13,7 @@ FILE(REMOVE_RECURSE
   "../msg_gen/cpp/include/quad_control/Vector3.h"
   "../msg_gen/cpp/include/quad_control/Point.h"
   "../msg_gen/cpp/include/quad_control/trajData.h"
+  "../msg_gen/cpp/include/quad_control/Wrench.h"
   "../msg_gen/cpp/include/quad_control/Twist.h"
 )
 

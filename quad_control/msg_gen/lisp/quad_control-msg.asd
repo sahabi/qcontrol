@@ -19,6 +19,8 @@
     (:file "_package_Point" :depends-on ("_package"))
     (:file "trajData" :depends-on ("_package_trajData"))
     (:file "_package_trajData" :depends-on ("_package"))
+    (:file "Wrench" :depends-on ("_package_Wrench"))
+    (:file "_package_Wrench" :depends-on ("_package"))
     (:file "Twist" :depends-on ("_package_Twist"))
     (:file "_package_Twist" :depends-on ("_package"))
   ))

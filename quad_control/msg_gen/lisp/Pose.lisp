@@ -61,10 +61,10 @@
   "e45d45a5a1ce597b249e23fb30fc871f")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<Pose>)))
   "Returns full string definition for message of type '<Pose>"
-  (cl:format cl:nil "~%# A representation of pose in free space, composed of postion and orientation. ~%Point position~%Quaternion orientation~%================================================================================~%MSG: quad_control/Point~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: quad_control/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%"))
+  (cl:format cl:nil "# A representation of pose in free space, composed of postion and orientation. ~%Point position~%Quaternion orientation~%================================================================================~%MSG: quad_control/Point~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: quad_control/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'Pose)))
   "Returns full string definition for message of type 'Pose"
-  (cl:format cl:nil "~%# A representation of pose in free space, composed of postion and orientation. ~%Point position~%Quaternion orientation~%================================================================================~%MSG: quad_control/Point~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: quad_control/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%"))
+  (cl:format cl:nil "# A representation of pose in free space, composed of postion and orientation. ~%Point position~%Quaternion orientation~%================================================================================~%MSG: quad_control/Point~%float64 x~%float64 y~%float64 z~%================================================================================~%MSG: quad_control/Quaternion~%# This represents an orientation in free space in quaternion form.~%~%float64 x~%float64 y~%float64 z~%float64 w~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <Pose>))
   (cl:+ 0
      (roslisp-msg-protocol:serialization-length (cl:slot-value msg 'position))

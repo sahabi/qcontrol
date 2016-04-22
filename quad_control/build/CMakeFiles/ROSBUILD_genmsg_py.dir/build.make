@@ -54,10 +54,11 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/quad_control/msg/__init__.py
 ../src/quad_control/msg/__init__.py: ../src/quad_control/msg/_Vector3.py
 ../src/quad_control/msg/__init__.py: ../src/quad_control/msg/_Point.py
 ../src/quad_control/msg/__init__.py: ../src/quad_control/msg/_trajData.py
+../src/quad_control/msg/__init__.py: ../src/quad_control/msg/_Wrench.py
 ../src/quad_control/msg/__init__.py: ../src/quad_control/msg/_Twist.py
 	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/quad_control/msg/__init__.py"
-	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/sahabi/ws/sandbox/quad_control/msg/Pose.msg /home/sahabi/ws/sandbox/quad_control/msg/TrajArray.msg /home/sahabi/ws/sandbox/quad_control/msg/Quaternion.msg /home/sahabi/ws/sandbox/quad_control/msg/trajDataArray.msg /home/sahabi/ws/sandbox/quad_control/msg/Vector3.msg /home/sahabi/ws/sandbox/quad_control/msg/Point.msg /home/sahabi/ws/sandbox/quad_control/msg/trajData.msg /home/sahabi/ws/sandbox/quad_control/msg/Twist.msg
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --initpy /home/sahabi/ws/sandbox/quad_control/msg/Pose.msg /home/sahabi/ws/sandbox/quad_control/msg/TrajArray.msg /home/sahabi/ws/sandbox/quad_control/msg/Quaternion.msg /home/sahabi/ws/sandbox/quad_control/msg/trajDataArray.msg /home/sahabi/ws/sandbox/quad_control/msg/Vector3.msg /home/sahabi/ws/sandbox/quad_control/msg/Point.msg /home/sahabi/ws/sandbox/quad_control/msg/trajData.msg /home/sahabi/ws/sandbox/quad_control/msg/Wrench.msg /home/sahabi/ws/sandbox/quad_control/msg/Twist.msg
 
 ../src/quad_control/msg/_Pose.py: ../msg/Pose.msg
 ../src/quad_control/msg/_Pose.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
@@ -96,6 +97,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/quad_control/msg/__init__.py
 ../src/quad_control/msg/_TrajArray.py: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
 ../src/quad_control/msg/_TrajArray.py: ../msg/Vector3.msg
 ../src/quad_control/msg/_TrajArray.py: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../src/quad_control/msg/_TrajArray.py: ../msg/Wrench.msg
 ../src/quad_control/msg/_TrajArray.py: ../msg/Twist.msg
 ../src/quad_control/msg/_TrajArray.py: ../msg/Pose.msg
 ../src/quad_control/msg/_TrajArray.py: ../msg/Point.msg
@@ -278,6 +280,37 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/quad_control/msg/__init__.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/quad_control/msg/_trajData.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/sahabi/ws/sandbox/quad_control/msg/trajData.msg
 
+../src/quad_control/msg/_Wrench.py: ../msg/Wrench.msg
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../src/quad_control/msg/_Wrench.py: ../msg/Vector3.msg
+../src/quad_control/msg/_Wrench.py: ../manifest.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/cpp_common/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rostime/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/roscpp_traits/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/genmsg/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/genpy/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/message_runtime/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/std_msgs/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/catkin/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/gencpp/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/genlisp/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/message_generation/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rosbuild/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rosconsole/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/roscpp/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rosgraph/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rospack/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/roslib/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/rospy/package.xml
+../src/quad_control/msg/_Wrench.py: /opt/ros/indigo/share/cmake_modules/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/quad_control/msg/_Wrench.py"
+	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/sahabi/ws/sandbox/quad_control/msg/Wrench.msg
+
 ../src/quad_control/msg/_Twist.py: ../msg/Twist.msg
 ../src/quad_control/msg/_Twist.py: /opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py
 ../src/quad_control/msg/_Twist.py: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
@@ -305,7 +338,7 @@ CMakeFiles/ROSBUILD_genmsg_py: ../src/quad_control/msg/__init__.py
 ../src/quad_control/msg/_Twist.py: /opt/ros/indigo/share/roslib/package.xml
 ../src/quad_control/msg/_Twist.py: /opt/ros/indigo/share/rospy/package.xml
 ../src/quad_control/msg/_Twist.py: /opt/ros/indigo/share/cmake_modules/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../src/quad_control/msg/_Twist.py"
 	/opt/ros/indigo/share/rospy/rosbuild/scripts/genmsg_py.py --noinitpy /home/sahabi/ws/sandbox/quad_control/msg/Twist.msg
 
@@ -318,6 +351,7 @@ ROSBUILD_genmsg_py: ../src/quad_control/msg/_trajDataArray.py
 ROSBUILD_genmsg_py: ../src/quad_control/msg/_Vector3.py
 ROSBUILD_genmsg_py: ../src/quad_control/msg/_Point.py
 ROSBUILD_genmsg_py: ../src/quad_control/msg/_trajData.py
+ROSBUILD_genmsg_py: ../src/quad_control/msg/_Wrench.py
 ROSBUILD_genmsg_py: ../src/quad_control/msg/_Twist.py
 ROSBUILD_genmsg_py: CMakeFiles/ROSBUILD_genmsg_py.dir/build.make
 .PHONY : ROSBUILD_genmsg_py

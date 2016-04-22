@@ -5,15 +5,32 @@ from quad_control.srv import *
 from gr1controller5 import Ctrl
 import time
 import re
+from quad_control.msg import Wrench
 from quad_control.msg import Twist
 from quad_control.msg import TrajArray
 from quad_control.msg import Vector3
 from quad_control.msg import Point
 from quad_control.msg import Pose
+from time import sleep
 
 M1 = Ctrl()
+rospy.init_node('quad_client', anonymous=True)
+pub = rospy.Publisher('cmd', TrajArray, queue_size=10)
+# size of grid
 x = 5
 y = 5
+
+# distance between adjacent centers in meters
+blocklength = 2
+
+# the point of origin. if block length is 2 bas = (0,0) then cell 0 is (1,1).
+base = Point()
+base.y = 0
+base.x = 0
+
+def talker(traj_2d):
+    rospy.loginfo(traj_2d)
+    pub.publish(traj_2d)
 
 def get_direction(next_position,current_position):
     if next_position - current_position == x:
@@ -31,21 +48,31 @@ def get_direction(next_position,current_position):
     return direction
 
 def vicon2state(position):
-    position = position
-    return position
+    global base
+    position.y = abs(int(position.y - base.x))/blocklength
+    position.x = abs(int(position.x - base.y))/blocklength
+    state = position.x + (position.y*x)
+    return state
 
-def state2vicon(position):
+def state2vicon(state):
+
+    global base
+    xaxis = state % x
+    yaxis = state / x
     position = Point()
-    position.x = 0
-    position.y = 0
+    position.x = base.x + (blocklength/2.) + (xaxis * blocklength ) 
+    position.y = base.y + (blocklength/2.) + (yaxis * blocklength ) 
     position.z = 0
     return position
 
+
 def get_vicon(id):
+    current_position = Point()
+    # the rest of the function to be replaced to get live data from vicon
     try:
-        current_position = next_position
+        current_position = state2vicon(next_position)
     except NameError:
-        current_position = 1
+        current_position = state2vicon(0)
     return current_position
 
 def conv_1d_2d(traj_1d, next_position,current_position):
@@ -55,7 +82,7 @@ def conv_1d_2d(traj_1d, next_position,current_position):
         twist = Twist()
         velocity = traj_1d[i].velocity
         accel = traj_1d[i].acceleration
-        acc_vec = Point()
+        acc_vec = Wrench()
         time = traj_1d[i].time
         position = traj_1d[i].position
         position2d = Pose()
@@ -65,9 +92,9 @@ def conv_1d_2d(traj_1d, next_position,current_position):
             twist.angular.x = 0
             twist.angular.y = 0
             twist.angular.z = 0
-            acc_vec.x = 0
-            acc_vec.y = 0
-            acc_vec.z = 0
+            acc_vec.force.x = 0
+            acc_vec.force.y = 0
+            acc_vec.force.z = 0
             position2d.position.x = state2vicon(current_position).x
             position2d.position.y = state2vicon(current_position).y
             position2d.position.z = state2vicon(current_position).z
@@ -77,9 +104,9 @@ def conv_1d_2d(traj_1d, next_position,current_position):
             twist.angular.x = 0
             twist.angular.y = 0 
             twist.angular.z = 0
-            acc_vec.x = 0
-            acc_vec.y = accel
-            acc_vec.z = 0
+            acc_vec.force.x = 0
+            acc_vec.force.y = accel
+            acc_vec.force.z = 0
             position2d.position.x = state2vicon(current_position).x
             position2d.position.y = (state2vicon(next_position).y - state2vicon(current_position).y)*position + state2vicon(current_position).y
             position2d.position.z = state2vicon(current_position).z
@@ -89,9 +116,9 @@ def conv_1d_2d(traj_1d, next_position,current_position):
             twist.angular.x = 0
             twist.angular.y = 0
             twist.angular.z = 0
-            acc_vec.x = accel
-            acc_vec.y = 0
-            acc_vec.z = 0
+            acc_vec.force.x = accel
+            acc_vec.force.y = 0
+            acc_vec.force.z = 0
             position2d.position.x = (state2vicon(next_position).x - state2vicon(current_position).x)*position + state2vicon(current_position).x
             position2d.position.y = state2vicon(current_position).y
             position2d.position.z = state2vicon(current_position).z
@@ -101,9 +128,9 @@ def conv_1d_2d(traj_1d, next_position,current_position):
             twist.angular.x = 0
             twist.angular.y = 0
             twist.angular.z = 0
-            acc_vec.x = 0
-            acc_vec.y = -accel
-            acc_vec.z = 0
+            acc_vec.force.x = 0
+            acc_vec.force.y = -accel
+            acc_vec.force.z = 0
             position2d.position.x = state2vicon(current_position).x
             position2d.position.y = (state2vicon(next_position).y - state2vicon(current_position).y)*position + state2vicon(current_position).y
             position2d.position.z = state2vicon(current_position).z
@@ -113,9 +140,9 @@ def conv_1d_2d(traj_1d, next_position,current_position):
             twist.angular.x = 0
             twist.angular.y = 0
             twist.angular.z = 0
-            acc_vec.x = -accel
-            acc_vec.y = 0
-            acc_vec.z = 0
+            acc_vec.force.x = -accel
+            acc_vec.force.y = 0
+            acc_vec.force.z = 0
             position2d.position.x = (state2vicon(next_position).x - state2vicon(current_position).x)*position + state2vicon(current_position).x
             position2d.position.y = state2vicon(current_position).y
             position2d.position.z = state2vicon(current_position).z
@@ -143,9 +170,8 @@ def get_traj(init_pos,final_pos,init_vel,final_vel,init_acc,final_acc,init_time,
     except rospy.ServiceException, e:
         print "Service call failed: %s"%e
 
-
 if __name__ == "__main__":
-    sampling_rate = 0.01
+    sampling_rate = 0.1
     init_pos = 0
     final_pos = 1
     init_vel = 0
@@ -154,33 +180,16 @@ if __name__ == "__main__":
     final_acc = 0
     init_time = 0
     final_time = 1
-    traj_1d = get_traj(init_pos, final_pos, init_vel, final_vel, init_acc, final_acc, init_time, final_time, sampling_rate)
+    current_position = init_pos
+    next_position = current_position
     while True:
         current_position = get_vicon(id)
         current_position = vicon2state(current_position)
-        next_position = get_reactive_ctrl()
-        traj_2d = conv_1d_2d(traj_1d, next_position,current_position)
-        print traj_2d
-
-#float32 time
-#float32 position
-#float32 velocity
-#float32 acceleration
-# publish to cmd_vel
-#p = rospy.Publisher('cmd_vel', Twist)
-# create a twist message, fill in the details
-#twist = Twist()
-#twist.linear.x = x_speed;                   # our forward speed
-#twist.linear.y = 0; twist.linear.z = 0;     # we can't use these!        
-#twist.angular.x = 0; twist.angular.y = 0;   #          or these!
-#twist.angular.z = 0;                        # no rotation
-# announce move, and publish the message
-#rospy.loginfo("About to be moving forward!")
-#for i in range(30):
-#    p.publish(twist)
-#    rospy.sleep(0.1) # 30*0.1 = 3.0
-# create a new message
-#twist = Twist()
-# note: everything defaults to 0 in twist, if we don't fill it in, we stop!
-#rospy.loginfo("Stopping!")
-#p.publish(twist)
+        if next_position == current_position:
+            next_position = get_reactive_ctrl()
+            traj_1d = get_traj(init_pos, final_pos, init_vel, final_vel, init_acc, final_acc, init_time, final_time, sampling_rate)
+            traj_2d = conv_1d_2d(traj_1d, next_position,current_position)
+            try:
+                talker(traj_2d)
+            except rospy.ROSInterruptException:
+                pass

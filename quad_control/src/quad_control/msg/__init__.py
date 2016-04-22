@@ -6,4 +6,5 @@ from ._TwistArray import *
 from ._Twist import *
 from ._Quaternion import *
 from ._trajData import *
+from ._Wrench import *
 from ._TrajArray import *

@@ -17,6 +17,7 @@ SET(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_TrajArray.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/TrajArray.lisp"
   "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_Twist.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/Twist.lisp"
   "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_Vector3.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/Vector3.lisp"
+  "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_Wrench.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/Wrench.lisp"
   "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_trajData.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/trajData.lisp"
   "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/_package_trajDataArray.lisp" "/home/sahabi/ws/sandbox/quad_control/msg_gen/lisp/trajDataArray.lisp"
   )

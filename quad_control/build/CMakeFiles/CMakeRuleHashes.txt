@@ -6,6 +6,7 @@ ba9c8a1d3a35b0b201225677da711254 ../msg_gen/cpp/include/quad_control/TrajArray.h
 61b97294e4f569053d68ca6fbdee624c ../msg_gen/cpp/include/quad_control/Twist.h
 893a8b91f34b8d64510650815606a096 ../msg_gen/cpp/include/quad_control/TwistArray.h
 7c9dde7077fb03e30c03181e8174d3d2 ../msg_gen/cpp/include/quad_control/Vector3.h
+99c2f8692c969379b5193cac6eba4e5e ../msg_gen/cpp/include/quad_control/Wrench.h
 bf69e37329466b730015d86a718f7088 ../msg_gen/cpp/include/quad_control/trajData.h
 99316dece5b1221a020e054b4ed90ad5 ../msg_gen/cpp/include/quad_control/trajDataArray.h
 ecae3c29acfb4f9c81160e93acbe306d ../msg_gen/lisp/Point.lisp
@@ -15,6 +16,7 @@ ad38be1069c004aa073e1f15f1cbac65 ../msg_gen/lisp/Quaternion.lisp
 bf7358781504f22eff5637984d6fadae ../msg_gen/lisp/Twist.lisp
 194107aae3738ec770da8c362ebfdc97 ../msg_gen/lisp/TwistArray.lisp
 dd329a4b5c4653daa00c6b5702da9fd3 ../msg_gen/lisp/Vector3.lisp
+e99691a44b59a8ce0fa9316c4caa22a7 ../msg_gen/lisp/Wrench.lisp
 d2364e813546ad6c31112a10b99cb340 ../msg_gen/lisp/trajData.lisp
 a605c7b41416f92258eac052d4f9b6cc ../msg_gen/lisp/trajDataArray.lisp
 4bf3c309dcab36f15d5e39b796150dd3 ../src/quad_control/msg/_Point.py
@@ -24,7 +26,8 @@ a605c7b41416f92258eac052d4f9b6cc ../msg_gen/lisp/trajDataArray.lisp
 9b382a206ce0fd557682635853c92eb6 ../src/quad_control/msg/_Twist.py
 5452fa1e39396e8ffd3304b402a5cbe1 ../src/quad_control/msg/_TwistArray.py
 bc3af94c52828fbdd00c955100a8ae03 ../src/quad_control/msg/_Vector3.py
-77dbd7c28b9af79fa4f318c5049f683c ../src/quad_control/msg/__init__.py
+7efdee96ca6cd20511cf9660470fdcb7 ../src/quad_control/msg/_Wrench.py
+4da1a3ec726532fe4aab3aff6b8e50fe ../src/quad_control/msg/__init__.py
 edc0c0eaaf68f28cc227b9589f11cfa3 ../src/quad_control/msg/_trajData.py
 cfdf03bc8a38980caf21f79ca2ae16cd ../src/quad_control/msg/_trajDataArray.py
 449ceea3056a822248b417bc36e816af ../src/quad_control/srv/_Traj.py

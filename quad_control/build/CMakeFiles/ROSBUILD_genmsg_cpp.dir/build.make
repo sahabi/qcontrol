@@ -52,6 +52,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/trajDataArra
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Vector3.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Point.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/trajData.h
+CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Wrench.h
 CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Twist.h
 
 ../msg_gen/cpp/include/quad_control/Pose.h: ../msg/Pose.msg
@@ -91,6 +92,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Twist.h
 ../msg_gen/cpp/include/quad_control/TrajArray.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
 ../msg_gen/cpp/include/quad_control/TrajArray.h: ../msg/Vector3.msg
 ../msg_gen/cpp/include/quad_control/TrajArray.h: /opt/ros/indigo/share/std_msgs/msg/Header.msg
+../msg_gen/cpp/include/quad_control/TrajArray.h: ../msg/Wrench.msg
 ../msg_gen/cpp/include/quad_control/TrajArray.h: ../msg/Twist.msg
 ../msg_gen/cpp/include/quad_control/TrajArray.h: ../msg/Pose.msg
 ../msg_gen/cpp/include/quad_control/TrajArray.h: ../msg/Point.msg
@@ -273,6 +275,37 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Twist.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/quad_control/trajData.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sahabi/ws/sandbox/quad_control/msg/trajData.msg
 
+../msg_gen/cpp/include/quad_control/Wrench.h: ../msg/Wrench.msg
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
+../msg_gen/cpp/include/quad_control/Wrench.h: ../msg/Vector3.msg
+../msg_gen/cpp/include/quad_control/Wrench.h: ../manifest.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/cpp_common/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rostime/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roscpp_traits/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roscpp_serialization/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/genmsg/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/genpy/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/message_runtime/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/std_msgs/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/catkin/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/gencpp/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/genlisp/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/message_generation/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rosbuild/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rosconsole/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rosgraph_msgs/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/xmlrpcpp/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roscpp/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rosgraph/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rospack/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/roslib/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/rospy/package.xml
+../msg_gen/cpp/include/quad_control/Wrench.h: /opt/ros/indigo/share/cmake_modules/package.xml
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/quad_control/Wrench.h"
+	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sahabi/ws/sandbox/quad_control/msg/Wrench.msg
+
 ../msg_gen/cpp/include/quad_control/Twist.h: ../msg/Twist.msg
 ../msg_gen/cpp/include/quad_control/Twist.h: /opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py
 ../msg_gen/cpp/include/quad_control/Twist.h: /opt/ros/indigo/share/roslib/cmake/../../../lib/roslib/gendeps
@@ -300,7 +333,7 @@ CMakeFiles/ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Twist.h
 ../msg_gen/cpp/include/quad_control/Twist.h: /opt/ros/indigo/share/roslib/package.xml
 ../msg_gen/cpp/include/quad_control/Twist.h: /opt/ros/indigo/share/rospy/package.xml
 ../msg_gen/cpp/include/quad_control/Twist.h: /opt/ros/indigo/share/cmake_modules/package.xml
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/sahabi/ws/sandbox/quad_control/build/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating ../msg_gen/cpp/include/quad_control/Twist.h"
 	/opt/ros/indigo/share/roscpp/rosbuild/scripts/genmsg_cpp.py /home/sahabi/ws/sandbox/quad_control/msg/Twist.msg
 
@@ -312,6 +345,7 @@ ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/trajDataArray.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Vector3.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Point.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/trajData.h
+ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Wrench.h
 ROSBUILD_genmsg_cpp: ../msg_gen/cpp/include/quad_control/Twist.h
 ROSBUILD_genmsg_cpp: CMakeFiles/ROSBUILD_genmsg_cpp.dir/build.make
 .PHONY : ROSBUILD_genmsg_cpp

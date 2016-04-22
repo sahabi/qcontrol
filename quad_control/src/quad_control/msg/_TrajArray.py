@@ -9,15 +9,14 @@ import quad_control.msg
 import std_msgs.msg
 
 class TrajArray(genpy.Message):
-  _md5sum = "5cfe93154dc27101e73a4984a4f1dcb4"
+  _md5sum = "99f24457a2c25ec6098a54c362a36262"
   _type = "quad_control/TrajArray"
   _has_header = True #flag to mark the presence of a Header object
   _full_text = """Header header
 Twist[] velocity
-Vector3[] acceleration
+Wrench[] acceleration
 float64[] time
 Pose[] position
-
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -47,8 +46,11 @@ float64 x
 float64 y
 float64 z
 ================================================================================
+MSG: quad_control/Wrench
+Vector3  force
+Vector3  torque
+================================================================================
 MSG: quad_control/Pose
-
 # A representation of pose in free space, composed of postion and orientation. 
 Point position
 Quaternion orientation
@@ -67,7 +69,7 @@ float64 z
 float64 w
 """
   __slots__ = ['header','velocity','acceleration','time','position']
-  _slot_types = ['std_msgs/Header','quad_control/Twist[]','quad_control/Vector3[]','float64[]','quad_control/Pose[]']
+  _slot_types = ['std_msgs/Header','quad_control/Twist[]','quad_control/Wrench[]','float64[]','quad_control/Pose[]']
 
   def __init__(self, *args, **kwds):
     """
@@ -138,7 +140,11 @@ float64 w
       length = len(self.acceleration)
       buff.write(_struct_I.pack(length))
       for val1 in self.acceleration:
-        _x = val1
+        _v3 = val1.force
+        _x = _v3
+        buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
+        _v4 = val1.torque
+        _x = _v4
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
       length = len(self.time)
       buff.write(_struct_I.pack(length))
@@ -147,11 +153,11 @@ float64 w
       length = len(self.position)
       buff.write(_struct_I.pack(length))
       for val1 in self.position:
-        _v3 = val1.position
-        _x = _v3
+        _v5 = val1.position
+        _x = _v5
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
-        _v4 = val1.orientation
-        _x = _v4
+        _v6 = val1.orientation
+        _x = _v6
         buff.write(_struct_4d.pack(_x.x, _x.y, _x.z, _x.w))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
@@ -190,13 +196,13 @@ float64 w
       self.velocity = []
       for i in range(0, length):
         val1 = quad_control.msg.Twist()
-        _v5 = val1.linear
-        _x = _v5
+        _v7 = val1.linear
+        _x = _v7
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
-        _v6 = val1.angular
-        _x = _v6
+        _v8 = val1.angular
+        _x = _v8
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
@@ -206,8 +212,14 @@ float64 w
       (length,) = _struct_I.unpack(str[start:end])
       self.acceleration = []
       for i in range(0, length):
-        val1 = quad_control.msg.Vector3()
-        _x = val1
+        val1 = quad_control.msg.Wrench()
+        _v9 = val1.force
+        _x = _v9
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
+        _v10 = val1.torque
+        _x = _v10
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
@@ -225,13 +237,13 @@ float64 w
       self.position = []
       for i in range(0, length):
         val1 = quad_control.msg.Pose()
-        _v7 = val1.position
-        _x = _v7
+        _v11 = val1.position
+        _x = _v11
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
-        _v8 = val1.orientation
-        _x = _v8
+        _v12 = val1.orientation
+        _x = _v12
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _struct_4d.unpack(str[start:end])
@@ -262,16 +274,20 @@ float64 w
       length = len(self.velocity)
       buff.write(_struct_I.pack(length))
       for val1 in self.velocity:
-        _v9 = val1.linear
-        _x = _v9
+        _v13 = val1.linear
+        _x = _v13
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
-        _v10 = val1.angular
-        _x = _v10
+        _v14 = val1.angular
+        _x = _v14
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
       length = len(self.acceleration)
       buff.write(_struct_I.pack(length))
       for val1 in self.acceleration:
-        _x = val1
+        _v15 = val1.force
+        _x = _v15
+        buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
+        _v16 = val1.torque
+        _x = _v16
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
       length = len(self.time)
       buff.write(_struct_I.pack(length))
@@ -280,11 +296,11 @@ float64 w
       length = len(self.position)
       buff.write(_struct_I.pack(length))
       for val1 in self.position:
-        _v11 = val1.position
-        _x = _v11
+        _v17 = val1.position
+        _x = _v17
         buff.write(_struct_3d.pack(_x.x, _x.y, _x.z))
-        _v12 = val1.orientation
-        _x = _v12
+        _v18 = val1.orientation
+        _x = _v18
         buff.write(_struct_4d.pack(_x.x, _x.y, _x.z, _x.w))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(_x))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(_x))))
@@ -324,13 +340,13 @@ float64 w
       self.velocity = []
       for i in range(0, length):
         val1 = quad_control.msg.Twist()
-        _v13 = val1.linear
-        _x = _v13
+        _v19 = val1.linear
+        _x = _v19
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
-        _v14 = val1.angular
-        _x = _v14
+        _v20 = val1.angular
+        _x = _v20
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
@@ -340,8 +356,14 @@ float64 w
       (length,) = _struct_I.unpack(str[start:end])
       self.acceleration = []
       for i in range(0, length):
-        val1 = quad_control.msg.Vector3()
-        _x = val1
+        val1 = quad_control.msg.Wrench()
+        _v21 = val1.force
+        _x = _v21
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
+        _v22 = val1.torque
+        _x = _v22
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
@@ -359,13 +381,13 @@ float64 w
       self.position = []
       for i in range(0, length):
         val1 = quad_control.msg.Pose()
-        _v15 = val1.position
-        _x = _v15
+        _v23 = val1.position
+        _x = _v23
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _struct_3d.unpack(str[start:end])
-        _v16 = val1.orientation
-        _x = _v16
+        _v24 = val1.orientation
+        _x = _v24
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _struct_4d.unpack(str[start:end])

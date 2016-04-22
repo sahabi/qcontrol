@@ -14,6 +14,7 @@ FILE(REMOVE_RECURSE
   "../src/quad_control/msg/_Vector3.py"
   "../src/quad_control/msg/_Point.py"
   "../src/quad_control/msg/_trajData.py"
+  "../src/quad_control/msg/_Wrench.py"
   "../src/quad_control/msg/_Twist.py"
 )
 

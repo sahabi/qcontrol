@@ -15,6 +15,8 @@
    "POINT"
    "<TRAJDATA>"
    "TRAJDATA"
+   "<WRENCH>"
+   "WRENCH"
    "<TWIST>"
    "TWIST"
   ))
