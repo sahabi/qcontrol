@@ -11,11 +11,12 @@ from quad_control.msg import TrajArray
 from geometry_msgs.msg import Vector3
 from geometry_msgs.msg import Point
 from geometry_msgs.msg import Pose
+from qcontrol_defs.msg import PVA
 from time import sleep
 
 M1 = Ctrl()
 rospy.init_node('quad_client', anonymous=True)
-pub = rospy.Publisher('cmd', TrajArray, queue_size=10)
+pub = rospy.Publisher('pva', PVA, queue_size=10)
 # size of grid
 x = 5
 y = 5
@@ -27,10 +28,6 @@ blocklength = 0.5
 base = Point()
 base.y = 0
 base.x = 0
-
-def talker(traj_2d):
-    rospy.loginfo(traj_2d)
-    pub.publish(traj_2d)
 
 def get_direction(next_position,current_position):
     if next_position - current_position == x:
@@ -153,6 +150,18 @@ def conv_1d_2d(traj_1d, next_position,current_position):
         trajlist.position.append(position2d)
     return trajlist
 
+def send_trajectory(traj_2d, sampling_rate):
+    r = rospy.Rate(sampling_rate)
+    for i in range(len(traj_2d.time)):
+        pva = PVA()
+        pva.t = traj_2d.time[i]
+        pva.pos = traj_2d.position[i]
+        pva.vel = traj_2d.velocity[i]
+        pva.acc.linear = traj_2d.acceleration[i].force
+        rospy.loginfo(i)
+        pub.publish(pva)
+        r.sleep()
+
 def get_reactive_ctrl():
     reactive_output = M1.move()
     for key, val in reactive_output.iteritems():
@@ -171,7 +180,7 @@ def get_traj(init_pos,final_pos,init_vel,final_vel,init_acc,final_acc,init_time,
         print "Service call failed: %s"%e
 
 if __name__ == "__main__":
-    sampling_rate = 0.1
+    sampling_rate = 10
     init_pos = 0
     final_pos = 1
     init_vel = 0
@@ -182,7 +191,7 @@ if __name__ == "__main__":
     final_time = 1
     current_position = init_pos
     next_position = current_position
-    while True:
+    while not rospy.is_shutdown():
         current_position = get_vicon(id)
         current_position = vicon2state(current_position)
         if next_position == current_position:
@@ -190,6 +199,6 @@ if __name__ == "__main__":
             traj_1d = get_traj(init_pos, final_pos, init_vel, final_vel, init_acc, final_acc, init_time, final_time, sampling_rate)
             traj_2d = conv_1d_2d(traj_1d, next_position,current_position)
             try:
-                talker(traj_2d)
+                send_trajectory(traj_2d, sampling_rate)
             except rospy.ROSInterruptException:
                 pass

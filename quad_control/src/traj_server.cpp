@@ -56,7 +56,7 @@ bool add(quad_control::Traj::Request  &req,
   a0 = req.init_acc; af = req.final_acc; //Initial and final acceleration
   t0 = req.init_time;     //Initial time
   tf = req.final_time;     //Final time
-  Ts = req.sampling_rate;    //Sampling period
+  Ts = 1.0/req.sampling_rate;    //Sampling period
   //Calculate vector length
   int length_vec = (tf - t0) / Ts + 1; //Length of output vectors
 
