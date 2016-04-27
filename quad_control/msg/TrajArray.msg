@@ -1,5 +1,5 @@
 Header header
-Twist[] velocity
-Wrench[] acceleration
+geometry_msgs/Twist[] velocity
+geometry_msgs/Wrench[] acceleration
 float64[] time
-Pose[] position
+geometry_msgs/Pose[] position

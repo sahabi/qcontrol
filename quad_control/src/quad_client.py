@@ -5,12 +5,12 @@ from quad_control.srv import *
 from gr1controller5 import Ctrl
 import time
 import re
-from quad_control.msg import Wrench
-from quad_control.msg import Twist
+from geometry_msgs.msg import Wrench
+from geometry_msgs.msg import Twist
 from quad_control.msg import TrajArray
-from quad_control.msg import Vector3
-from quad_control.msg import Point
-from quad_control.msg import Pose
+from geometry_msgs.msg import Vector3
+from geometry_msgs.msg import Point
+from geometry_msgs.msg import Pose
 from time import sleep
 
 M1 = Ctrl()
@@ -21,7 +21,7 @@ x = 5
 y = 5
 
 # distance between adjacent centers in meters
-blocklength = 2
+blocklength = 0.5
 
 # the point of origin. if block length is 2 bas = (0,0) then cell 0 is (1,1).
 base = Point()
